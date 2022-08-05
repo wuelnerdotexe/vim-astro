@@ -13,15 +13,6 @@ if exists('b:did_indent')
   finish
 endif
 
-" Astro indent variables are initialized.
-let g:astro_indent = get(g:, 'astro_indent', 'disable')
-
-" Only load this indent file (experimental) when is explicit enable.
-" TODO: When the indentation is stable, this option will be removed.
-if g:astro_indent != 'enable'
-  finish
-endif
-
 let b:html_indent_script1 = 'inc'
 let b:html_indent_style1 = 'inc'
 
