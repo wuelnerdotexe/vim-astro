@@ -1,0 +1,17 @@
+*astro.txt* Astro language indentation and syntax support in Vim or Neovim.
+
+==============================================================================
+
+1. Configuration                                         *astro-configuration*
+
+The following variables control certain syntax highlighting features.
+You can add them to your `.vimrc` or `init.vim`.
+
+`let g:astro_typescript = 'enable'`
+
+Enables TypeScript and TSX for `.astro` files.
+
+Default Value: 'disable'
+
+==============================================================================
+vim:textwidth=78:tabstop=8:filetype=help:
