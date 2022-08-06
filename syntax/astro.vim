@@ -20,6 +20,7 @@ endif
 
 " Astro syntax variables are initialized.
 let g:astro_typescript = get(g:, 'astro_typescript', 'disable')
+let g:astro_stylus = get(g:, 'astro_stylus', 'disable')
 
 let s:cpoptions_save = &cpoptions
 set cpoptions&vim
@@ -141,25 +142,31 @@ unlet b:current_syntax
 " Embedded Stylus syntax.
 " NOTE: Vim does not provide stylus support by default, but you can install
 "       this plugin to support it: https://github.com/wavded/vim-stylus
-syntax include @astroStylus syntax/stylus.vim
+if g:astro_stylus == 'enable'
+  try
+    syntax include @astroStylus syntax/stylus.vim
 
-" stylusStyle: add Stylus style tags support in Astro.
-syntax region stylusStyle
-      \ start=/<style\>\_[^>]*\(lang\)=\("\|''\)[^\2]*stylus[^\2]*\2\_[^>]*>/
-      \ keepend
-      \ end="</style>"me=s-1
-      \ contains=@astroStylus,astroSurroundingTag
-      \ fold
+    " stylusStyle: add Stylus style tags support in Astro.
+    syntax region stylusStyle
+          \ start=/<style\>\_[^>]*\(lang\)=\("\|''\)[^\2]*stylus[^\2]*\2\_[^>]*>/
+          \ keepend
+          \ end="</style>"me=s-1
+          \ contains=@astroStylus,astroSurroundingTag
+          \ fold
 
-unlet b:current_syntax
+    unlet b:current_syntax
 
-" astroSurroundingTag: add surround HTML tag to script and style.
-syntax region astroSurroundingTag
-      \ start=+<\(script\|style\)+
-      \ end=+>+
-      \ contains=htmlTagError,htmlTagN,htmlArg,htmlValue,htmlEvent,htmlString
-      \ contained
-      \ fold
+    " astroSurroundingTag: add surround HTML tag to script and style.
+    syntax region astroSurroundingTag
+          \ start=+<\(script\|style\)+
+          \ end=+>+
+          \ contains=htmlTagError,htmlTagN,htmlArg,htmlValue,htmlEvent,htmlString
+          \ contained
+          \ fold
+  catch
+    echomsg "you need install a external plugin for support stylus in astro files"
+  endtry
+endif
 
 " Define the default highlighting.
 " Only used when an item doesn't have highlighting yet.

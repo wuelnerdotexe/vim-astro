@@ -13,5 +13,12 @@ Enables TypeScript and TSX for `.astro` files.
 
 Default Value: 'disable'
 
+`let g:astro_stylus = 'enable'`
+
+Enables Stylus for `.astro` files.
+
+Default Value: 'disable'
+
+NOTE: You need install a external plugin for support stylus in astro files.
 ==============================================================================
 vim:textwidth=78:tabstop=8:filetype=help:

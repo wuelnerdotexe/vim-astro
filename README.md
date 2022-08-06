@@ -4,6 +4,11 @@
 
 Provides syntax highlighting and indentation (beta) support for `.astro` files.
 
+<div align="center">
+  <img src="https://raw.githubusercontent.com/wuelnerdotexe/vim-astro/main/assets/astro.png">
+  <strong>Theme:</strong> <a href="https://wuelnerdotexe.github.io/enfocado">Enfocado</a> Dark Neon.
+</div>
+
 ## Features
 
 - Syntax highlighting for embedded languages:
@@ -36,6 +41,16 @@ let g:astro_typescript = 'enable'
 Enables TypeScript and TSX for `.astro` files.
 
 Default Value: 'disable'
+
+```vim
+let g:astro_stylus = 'enable'
+```
+
+Enables Stylus for `.astro` files.
+
+Default Value: 'disable'
+
+NOTE: Vim does not provide Stylus support by default, but you can install [vim-stylus](https://github.com/wavded/vim-stylus) to support it.
 
 ## Maintainer
 
