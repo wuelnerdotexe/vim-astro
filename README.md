@@ -2,7 +2,7 @@
 
 > 🧑‍🚀 Not sure what Astro is? See their website at [astro.build](https://astro.build)!
 
-Provides syntax highlighting and indentation (beta) support for `.astro` files.
+Provides syntax highlighting and indentation support for `.astro` files.
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/wuelnerdotexe/vim-astro/main/assets/astro.png">
@@ -64,4 +64,4 @@ NOTE: Vim does not provide Stylus support by default, but you can install [vim-s
 
 [MIT &copy; Wuelner Martínez.](https://github.com/wuelnerdotexe/vim-astro/blob/main/LICENSE)
 
-<p align="center">¡Con 💖 de <strong>LATAM</strong> para el mundo!</p>
+<p align="center">With 💖 from <strong>LATAM</strong> to the world!</p>
