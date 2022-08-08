@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.1] - 2022-08-07
+
+### Fixed
+
+- Regions that were causing conflicts with JavaScript code blocks and expressions are renamed. Now those blocks are replaced by the exclusive code blocks for Astro.
+- Regular expressions are fixed to correctly detect Astro directives.
+
 ## [1.1.0] - 2022-08-06
 
 ### Added
@@ -21,4 +28,4 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Initial release
 
-<p align="center">¡Con 💖 de <strong>Latinoamérica</strong> para el mundo!</p>
+<p align="center">¡Con 💖 de <strong>LATAM</strong> para el mundo!</p>

@@ -1,7 +1,6 @@
-" Vim indent file.
+" Vim indent file (experimental).
 " Language:    Astro
 " Author:      Wuelner Martínez <wuelner.martinez@outlook.com>
-" Maintainer:  Wuelner Martínez <wuelner.martinez@outlook.com>
 " URL:         https://github.com/wuelnerdotexe/vim-astro
 " Last Change: 2022 Aug 05
 " Based On:    Evan Lecklider's vim-svelte
@@ -55,7 +54,7 @@ function! GetAstroIndent()
     return l:previous_line_indent + shiftwidth()
   endif
 
-  execute 'let g:indent = ' . s:html_indent
+  execute 'let l:indent = ' . s:html_indent
 
   if searchpair('<style>', '', '</style>', 'bW') &&
         \ l:previous_line =~ ';$' && l:current_line !~ '}'
@@ -67,7 +66,7 @@ function! GetAstroIndent()
         \ ) + 1, 0) == hlID('htmlTag') && synID(l:current_line_number, match(
         \  l:current_line, '\S'
         \ ) + 1, 0) != hlID('htmlEndTag')
-    let l:indents_match = g:indent == l:previous_line_indent
+    let l:indents_match = l:indent == l:previous_line_indent
     let l:previous_closes = l:previous_line =~ '/>$'
 
     if l:indents_match &&
@@ -78,7 +77,7 @@ function! GetAstroIndent()
     endif
   endif
 
-  return g:indent
+  return l:indent
 endfunction
 
 let &cpoptions = s:cpoptions_save

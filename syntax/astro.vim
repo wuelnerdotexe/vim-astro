@@ -1,7 +1,6 @@
 " Vim syntax file.
 " Language:    Astro
 " Author:      Wuelner Martínez <wuelner.martinez@outlook.com>
-" Maintainer:  Wuelner Martínez <wuelner.martinez@outlook.com>
 " URL:         https://github.com/wuelnerdotexe/vim-astro
 " Last Change: 2022 Aug 05
 " Based On:    Evan Lecklider's vim-svelte
@@ -28,11 +27,11 @@ set cpoptions&vim
 " Embedded HTML syntax.
 runtime! syntax/html.vim
 
-" htmlTagName: expand HTML tag names to include mixed case, periods, and colons.
-syntax match htmlTagName contained '\<[a-zA-Z:\.]*\>'
+" htmlTagName: expand HTML tag names to include mixed case, periods.
+syntax match htmlTagName contained "\<[a-zA-Z\.]*\>"
 
 " astroDirectives: add Astro Directives to HTML arguments.
-syntax match astroDirectives contained '\<[a-z]\+:[a-z|]\+=' containedin=htmlTag
+syntax match astroDirectives contained '\<[a-z]\+:[a-z|]*\>' containedin=htmlTag
 
 unlet b:current_syntax
 
@@ -49,7 +48,7 @@ if g:astro_typescript == 'enable'
 
   " javaScript: add TypeScript support to HTML script tag.
   syntax clear javaScript
-  syntax region javaScript 
+  syntax region javaScript
         \ start=+<script\_[^>]*>+
         \ keepend
         \ end=+</script\_[^>]*>+me=s-1
@@ -59,13 +58,14 @@ else
   syntax include @astroJavaScript syntax/javascript.vim
 endif
 
-" javaScript: add TypeScript support to Astro code fence.
-syntax region javaScript
+" astrojavaScript: add TypeScript support to Astro code fence.
+syntax region astroJavaScript
       \ start=+---+
       \ keepend
       \ end=+---+
       \ contains=htmlTag,@astroJavaScript,@htmlPreproc,htmlCssStyleComment,htmlEndTag
       \ matchgroup=astroFence
+      \ fold
 
 unlet b:current_syntax
 
@@ -77,8 +77,8 @@ else
   syntax include @astroJavaScriptReact syntax/javascriptreact.vim
 endif
 
-" javaScriptExpression: add {JSX or TSX} support to Astro `{}` expresions.
-execute 'syntax region javaScriptExpression start=+{+ keepend end=+}+ ' .
+" astroJavaScriptExpression: add {JSX or TSX} support to Astro expresions.
+execute 'syntax region astroJavaScriptExpression start=+{+ keepend end=+}+ ' .
       \ 'contains=@astroJavaScriptReact, @htmlPreproc containedin=' . join([
       \   'htmlArg', 'htmlBold', 'htmlBoldItalic', 'htmlBoldItalicUnderline',
       \   'htmlBoldUnderline', 'htmlBoldUnderlineItalic', 'htmlH1', 'htmlH2',
@@ -107,7 +107,7 @@ syntax include @astroScss syntax/scss.vim
 syntax region scssStyle
       \ start=/<style\>\_[^>]*\(lang\)=\("\|''\)[^\2]*scss[^\2]*\2\_[^>]*>/
       \ keepend
-      \ end="</style>"me=s-1
+      \ end=+</style>+me=s-1
       \ contains=@astroScss,astroSurroundingTag
       \ fold
 
@@ -120,7 +120,7 @@ syntax include @astroSass syntax/sass.vim
 syntax region sassStyle
       \ start=/<style\>\_[^>]*\(lang\)=\("\|''\)[^\2]*sass[^\2]*\2\_[^>]*>/
       \ keepend
-      \ end="</style>"me=s-1
+      \ end=+</style>+me=s-1
       \ contains=@astroSass,astroSurroundingTag
       \ fold
 
@@ -133,7 +133,7 @@ syntax include @astroLess syntax/less.vim
 syntax region lessStyle
       \ start=/<style\>\_[^>]*\(lang\)=\("\|''\)[^\2]*less[^\2]*\2\_[^>]*>/
       \ keepend
-      \ end="</style>"me=s-1
+      \ end=+</style>+me=s-1
       \ contains=@astroLess,astroSurroundingTag
       \ fold
 
@@ -150,23 +150,23 @@ if g:astro_stylus == 'enable'
     syntax region stylusStyle
           \ start=/<style\>\_[^>]*\(lang\)=\("\|''\)[^\2]*stylus[^\2]*\2\_[^>]*>/
           \ keepend
-          \ end="</style>"me=s-1
+          \ end=+</style>+me=s-1
           \ contains=@astroStylus,astroSurroundingTag
           \ fold
 
     unlet b:current_syntax
-
-    " astroSurroundingTag: add surround HTML tag to script and style.
-    syntax region astroSurroundingTag
-          \ start=+<\(script\|style\)+
-          \ end=+>+
-          \ contains=htmlTagError,htmlTagN,htmlArg,htmlValue,htmlEvent,htmlString
-          \ contained
-          \ fold
   catch
-    echomsg "you need install a external plugin for support stylus in astro files"
+    echomsg "you need install a external plugin for support stylus in .astro files"
   endtry
 endif
+
+" astroSurroundingTag: add surround HTML tag to script and style.
+syntax region astroSurroundingTag
+      \ start=+<\(script\|style\)+
+      \ end=+>+
+      \ contains=htmlTagError,htmlTagN,htmlArg,htmlValue,htmlEvent,htmlString
+      \ contained
+      \ fold
 
 " Define the default highlighting.
 " Only used when an item doesn't have highlighting yet.
@@ -177,6 +177,9 @@ let b:current_syntax = 'astro'
 if main_syntax == 'astro'
   unlet main_syntax
 endif
+
+" Sync from start because of the wacky nesting.
+syntax sync fromstart
 
 let &cpoptions = s:cpoptions_save
 unlet s:cpoptions_save

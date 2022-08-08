@@ -16,7 +16,7 @@ Provides syntax highlighting and indentation (beta) support for `.astro` files.
 	- TypeScript and TSX.
 	- CSS, SCSS, SASS, and LESS.
 	- Stylus (need external support).
-- Indentation (beta).
+- Indentation (experimental).
 - Code folding.
 - No dependencies.
 
