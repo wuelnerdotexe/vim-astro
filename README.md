@@ -5,7 +5,7 @@
 Provides syntax highlighting and indentation support for `.astro` files.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/wuelnerdotexe/vim-astro/main/assets/astro.png">
+  <img src="https://raw.githubusercontent.com/wuelnerdotexe/vim-astro/main/assets/vim-astro.png">
   <strong>Theme:</strong> <a href="https://wuelnerdotexe.github.io/enfocado">Enfocado</a> Dark Neon.
 </div>
 
