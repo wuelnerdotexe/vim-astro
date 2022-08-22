@@ -12,10 +12,10 @@ Provides syntax highlighting and indentation support for `.astro` files.
 ## Features
 
 - Syntax highlighting for embedded languages:
-	- JavaScript and JSX.
-	- TypeScript and TSX.
-	- CSS, SCSS, SASS, and LESS.
-	- Stylus (need external support).
+  - JavaScript and JSX.
+  - TypeScript and TSX.
+  - CSS, SCSS, SASS, and LESS.
+  - Stylus (need external support).
 - Indentation (experimental).
 - Code folding.
 - No dependencies.

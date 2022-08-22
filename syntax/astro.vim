@@ -1,8 +1,9 @@
 " Vim syntax file.
 " Language:    Astro
 " Author:      Wuelner Martínez <wuelner.martinez@outlook.com>
+" Maintainer:  Wuelner Martínez <wuelner.martinez@outlook.com>
 " URL:         https://github.com/wuelnerdotexe/vim-astro
-" Last Change: 2022 Aug 05
+" Last Change: 2022 Aug 22
 " Based On:    Evan Lecklider's vim-svelte
 " Changes:     See https://github.com/evanleck/vim-svelte
 " Credits:     See vim-svelte on github
@@ -27,7 +28,7 @@ set cpoptions&vim
 " Embedded HTML syntax.
 runtime! syntax/html.vim
 
-" htmlTagName: expand HTML tag names to include mixed case, periods.
+" htmlTagName: expand HTML tag names to include mixed case and periods.
 syntax match htmlTagName contained "\<[a-zA-Z\.]*\>"
 
 " astroDirectives: add Astro Directives to HTML arguments.
@@ -58,13 +59,15 @@ else
   syntax include @astroJavaScript syntax/javascript.vim
 endif
 
+" astroFence: detect the Astro fence.
+syntax match astroFence contained +^---$+
+
 " astrojavaScript: add TypeScript support to Astro code fence.
 syntax region astroJavaScript
-      \ start=+---+
+      \ start=+^---$+
       \ keepend
-      \ end=+---+
-      \ contains=htmlTag,@astroJavaScript,@htmlPreproc,htmlCssStyleComment,htmlEndTag
-      \ matchgroup=astroFence
+      \ end=+^---$+
+      \ contains=htmlTag,@astroJavaScript,@htmlPreproc,htmlCssStyleComment,htmlEndTag,astroFence
       \ fold
 
 unlet b:current_syntax
@@ -144,6 +147,7 @@ unlet b:current_syntax
 "       this plugin to support it: https://github.com/wavded/vim-stylus
 if g:astro_stylus == 'enable'
   try
+    " Embedded Stylus syntax.
     syntax include @astroStylus syntax/stylus.vim
 
     " stylusStyle: add Stylus style tags support in Astro.

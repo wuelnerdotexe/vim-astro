@@ -1,8 +1,9 @@
 " Vim indent file (experimental).
 " Language:    Astro
 " Author:      Wuelner Martínez <wuelner.martinez@outlook.com>
+" Maintainer:  Wuelner Martínez <wuelner.martinez@outlook.com>
 " URL:         https://github.com/wuelnerdotexe/vim-astro
-" Last Change: 2022 Aug 05
+" Last Change: 2022 Aug 07
 " Based On:    Evan Lecklider's vim-svelte
 " Changes:     See https://github.com/evanleck/vim-svelte
 " Credits:     See vim-svelte on github
