@@ -58,7 +58,7 @@ NOTE: Vim does not provide Stylus support by default, but you can install [vim-s
 
 ## Credits
 
-- Based on: [Evan Lecklider's](https://github.com/evanleck) [vim-svelte](https://github.com/evanleck/vim-svelte).
+- Based on: Plugin [vim-svelte](https://github.com/evanleck/vim-svelte) by. [Evan Lecklider's](https://github.com/evanleck).
 
 ## License
 
