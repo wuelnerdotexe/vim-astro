@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2022-10-06
+
+### Added
+
+- Merge pull request [#3](https://github.com/wuelnerdotexe/vim-astro/pull/3) from `romainl/ftplugin-and-autoload`
+  - Add `ftplugin/astro.vim` and `autoload/astro.vim`
+
 ## [1.1.3] - 2022-08-24
 
 ### Fixed
