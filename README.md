@@ -18,7 +18,8 @@ Provides syntax highlighting and indentation support for `.astro` files.
   - Stylus (need external support).
 - Indentation (experimental).
 - Code folding.
-- No dependencies.
+- No dependencies from external syntax plugins.
+- Full integration with Vim functions. [Read more](https://github.com/wuelnerdotexe/vim-astro/pull/3).
 
 ## Installation
 
